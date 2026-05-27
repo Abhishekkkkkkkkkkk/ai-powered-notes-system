@@ -109,7 +109,7 @@ graph TD
 
 Please review the images saved inside the `screenshots/` directory representing active features:
 
-1. **`dashboard.png`**: Displays the main dashboard UI, displaying notes fetched from the MySQL database with pagination.
+1. **`dashboard.png`**: Display the main dashboard UI, displaying notes fetched from the MySQL database with pagination.
 2. **`create-new-notes.png`**: Shows the creation page used to validate inputs and save new notes.
 3. **`edit-notes.png`**: Shows the note editing interface where updates are typed and saved.
 4. **`semantic-search-features.png`**: Demonstrates the AI vector search in action, showing similarity scores and matching notes ranked by relevance.
