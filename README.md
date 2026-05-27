@@ -11,10 +11,10 @@ It enables users to create and manage notes with traditional CRUD features, whil
 - **Standard Note CRUD**: Create, update, view, and delete notes.
 - **Multi-Provider AI (Gemini & OpenAI)**: Toggle seamlessly between Google Gemini (completely free tier) and OpenAI.
 - **AI Semantic Vector Search**: Find notes by contextual meaning instead of exact keywords using `text-embedding-004` (Gemini) or `text-embedding-3-small` (OpenAI) and Cosine Similarity math.
-- **AI-Powered Note Summaries**: Generate concise 3-5 line note summaries via `gemini-1.5-flash` or `gpt-4o-mini` with instant Redis caching.
+- **AI-Powered Note Summaries**: Generate concise 3-5 line note summaries via **gemini-2.5-flash** or **gpt-4o-mini** with instant Redis caching.
 - **Dynamic Vector Re-indexing**: Artisan command `notes:regenerate-embeddings` enables migrating all stored embeddings instantly when switching between Gemini and OpenAI.
 - **Modern Glassmorphism UI**: Clean dashboard interface equipped with loaders, empty states, and toast notifications.
-- **Full Swagger/OpenAPI Documentation**: Automatically generated interactive API explorer.
+- **Full Swagger/OpenAPI Documentation**: Automatically generated interactive API explorer served at `/api/documentation` with definitions served at `/docs`.
 - **Docker Compose Setup**: Spins up PHP-FPM, Nginx, MySQL, Redis, and Vite in containers.
 - **Comprehensive Testing Suite**: Includes mathematical unit testing for Cosine Similarity and feature testing for API endpoints (with mocked AI layers).
 
@@ -157,10 +157,11 @@ When a user inputs a query (e.g. *"OOP inheritance in PHP"*):
 
 ### 3. Caching AI Summaries
 Generating summaries incurs API costs and network latency.
-- **Gemini Model**: `gemini-1.5-flash`
+- **Gemini Model**: `gemini-2.5-flash`
 - **OpenAI Model**: `gpt-4o-mini`
 - **Prompt**: `"You are a helpful notes assistant. Summarize the following note clearly in 3-5 concise lines. Keep it simple and relevant."`
-- The `SummaryService` intercept checks if the note's summary exists in **Redis** (`note_summary_{id}`).
+- **Reasoning Token Budget**: Since `gemini-2.5-flash` is a reasoning model, its thinking process consumes tokens under the output budget. The backend configures `maxOutputTokens => 1024` to ensure the reasoning engine has ample space to think and return complete, high-quality summaries without truncation.
+- **Redis Caching**: The `SummaryService` intercept checks if the note's summary exists in **Redis** (`note_summary_{id}`).
 - If cached, it is served instantly. If missing, it requests the active AI provider and stores the summary in Redis with a 24-hour TTL.
 - The summary cache is **invalidated** whenever the note's content is modified or deleted.
 
