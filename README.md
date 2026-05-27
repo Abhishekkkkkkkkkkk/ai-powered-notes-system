@@ -260,35 +260,6 @@ All routes are throttled to `60 requests / min` for security.
 3. **Collaboration and Multi-user support**: Implement Laravel Sanctum/Passport authentication to allow individual user note logs.
 4. **Rich Text Formatting**: Introduce Quill.js or Editor.js in the React form to allow rich-text note edits.
 
----
 
-## AI Tools, Prompts & Code Validation
+<!-- End of README -->
 
-This project was built using AI-Assisted Development practices, co-piloted by **Antigravity** (developed by the Google DeepMind team). Below is the documentation of how AI was used, the prompts executed, and how the codebase was validated.
-
-### 1. AI Tools Used
-- **Antigravity (Google DeepMind)**: Used as the lead architect and pair programmer to generate the clean architecture layout, write files, manage dependencies, and diagnose Docker/container configurations.
-- **Tailwind / Vite Config Tools**: Used to style the front-end layout with custom violet/slate glassmorphism elements.
-
-### 2. Key Prompts Used
-- **Planning Prompt**: *"You are a senior Full Stack AI Engineer and Laravel Architect. Build a complete production-ready AI-Powered Notes Management System using Laravel, MySQL, React, Tailwind CSS, and OpenAI APIs... generate a scalable directory structure."*
-- **Gemini Integration Prompt**: *"Option 1: Use Google Gemini API. Refactor the backend to support a generic AIServiceInterface so the application can toggle between OpenAI and Google Gemini APIs without breaking downstream repositories or controllers."*
-- **Docker Config Prompt**: *"Create a docker-compose.yml and Dockerfiles for PHP-FPM, Nginx, Redis, and MySQL to support local containerization."*
-- **Mathematical Validation Prompt**: *"Write a unit test to verify that the cosine similarity calculations handle identical, orthogonal, opposite, and zero-dimensional vectors properly without division-by-zero errors."*
-- **Troubleshooting Prompt**: *"Class 'Predis\Client' not found when executing Laravel config. Help me fix the composer lock sync and cache mapping."*
-
-### 3. How the Generated Code Was Validated
-All generated code underwent strict multi-layer validation checks:
-
-1. **Mathematical Unit Testing**:
-   - Implemented `SemanticSearchTest.php` to calculate and assert vector similarities. Identical vectors were tested to ensure they returned exactly `1.0`, orthogonal vectors returned `0.0`, and opposite vectors returned `-1.0`.
-2. **REST API Endpoint Testing**:
-   - Created `NoteApiTest.php` to test notes CRUD operations under mock conditions. This verified that API responses, validation error payloads, and HTTP status codes (201, 200, 404, 422) adhere strictly to REST specifications.
-3. **Mocking External Services**:
-   - AI embedding and completion APIs were mocked using Mockery in testing environments. This prevents outbound HTTP requests during tests, keeping test suites fast, free of charge, and deterministic.
-4. **Local Host Troubleshooting & Debugging**:
-   - **Port Conflict Isolation**: Identified that host port `3306` was occupied by a local MySQL service on the host computer. Solved it by modifying `docker-compose.yml` to map the database to host port `3307` while retaining container-to-container port `3306` queries.
-   - **Directory Permissions**: Solved `bootstrap/cache` and `storage/` directory errors by creating directories with `.gitkeep` placeholders and setting container folder permissions to `777` via `chmod`.
-   - **Composer Lock Synchronization**: Identified out-of-sync dependency caches. Solved by updating the composer dependencies with `composer update predis/predis`.
-5. **Cross-Origin Resource Sharing (CORS) Bypass**:
-   - Configured both Laravel `cors.php` configuration blocks AND Vite's internal port dev server proxy mapping (`/api` mapped to `http://webserver:80`). This guarantees the browser avoids CORS blockages on origin redirects.
