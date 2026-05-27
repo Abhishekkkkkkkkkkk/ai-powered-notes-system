@@ -1,0 +1,9 @@
+Place your screenshot files in this folder for the instructor submission.
+
+Please capture and name your files as follows to match the references in INSTRUCTOR_GUIDE.md:
+1. '01_Dashboard_View.png'
+2. '02_Semantic_Search_Laravel.png'
+3. '03_Semantic_Search_Pizza.png'
+4. '04_AI_Summary_Modal.png'
+5. '05_Swagger_API_Explorer.png'
+6. '06_PHPUnit_Test_Results.png'

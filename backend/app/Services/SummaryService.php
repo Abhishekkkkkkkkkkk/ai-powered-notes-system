@@ -29,7 +29,7 @@ class SummaryService
      */
     public function getNoteSummary(int $noteId): string
     {
-        $note = $this->noteRepository.findNoteById($noteId);
+        $note = $this->noteRepository->findNoteById($noteId);
 
         if (!$note) {
             throw new Exception('Note not found', 404);
