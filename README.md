@@ -261,5 +261,70 @@ All routes are throttled to `60 requests / min` for security.
 4. **Rich Text Formatting**: Introduce Quill.js or Editor.js in the React form to allow rich-text note edits.
 
 
+---
+
+## Database Schema Design
+
+The database layer is managed using Laravel migrations. The primary storage uses MySQL with a dedicated `notes` schema designed to store text content alongside vector embeddings.
+
+### `notes` Table Schema Details
+| Column | Type | Attributes | Description |
+| :--- | :--- | :--- | :--- |
+| **`id`** | `bigint(20)` | `unsigned`, `primary key`, `auto_increment` | Unique identifier for each note. |
+| **`title`** | `varchar(255)` | `not null` | The title of the note. |
+| **`content`** | `text` | `not null` | The body text content of the note. |
+| **`embedding`** | `json` | `nullable` | Stores the vector representation coordinates array (768 floats for Gemini, 1536 floats for OpenAI). |
+| **`created_at`** | `timestamp` | `nullable` | Timestamp of note creation. |
+| **`updated_at`** | `timestamp` | `nullable` | Timestamp of the last note update. |
+
+* **Model Casts**: In [Note.php](file:///D:/ai-notes-system/backend/app/Models/Note.php), the `embedding` column is cast to a PHP `array`. This handles serialization/deserialization between the PHP application and the MySQL JSON representation automatically.
+
+---
+
+## Architectural & Code Quality Explanation
+
+The system is built on **Clean Architecture** patterns, prioritizing separation of concerns, testability, and decoupling.
+
+### 1. The Service-Repository Pattern
+To prevent bloating controllers and models, logic is split into dedicated layers:
+* **Repository Layer**: The [NoteRepository](file:///D:/ai-notes-system/backend/app/Repositories/NoteRepository.php) encapsulates all database queries. The application binds it through the [NoteRepositoryInterface](file:///D:/ai-notes-system/backend/app/Repositories/NoteRepositoryInterface.php) using Laravel's dependency injection (DI) container.
+* **Service Layer**: Handles the domain and AI logic.
+  * `SummaryService`: Manages note summarization caching workflows (using Redis to save API limits).
+  * `SemanticSearchService`: Computes Cosine Similarity comparisons on float arrays and handles vector sorting.
+
+### 2. Multi-Provider AI Abstraction
+* To allow hot-swapping AI models without modifying core controller logic, we defined the [AIServiceInterface](file:///D:/ai-notes-system/backend/app/Services/AIServiceInterface.php) containing standard contracts for `generateEmbedding()` and `generateSummary()`.
+* In [AppServiceProvider.php](file:///D:/ai-notes-system/backend/app/Providers/AppServiceProvider.php), the interface is bound dynamically:
+  * If `AI_PROVIDER=gemini`, the DI container returns the `GeminiService`.
+  * If `AI_PROVIDER=openai`, it returns the `OpenAIService`.
+
+### 3. Redis Cache Orchestration
+* Summaries are cached in **Redis** with a 24-hour TTL (`note_summary_{id}`).
+* When a note is updated or deleted, the cache is automatically invalidated by calling `invalidateSummaryCache()` to ensure data consistency.
+
+---
+
+## AI-Assisted Development Methodology
+
+This project utilized AI-assisted development tools (such as **Antigravity** and **GitHub Copilot**) to accelerate planning, writing math algorithms, and writing tests.
+
+### 1. AI Tools Used
+* **Antigravity (Google DeepMind)**: Served as a lead pair-programming agent, helping design the architecture, debug docker networking, setup Redis drivers, and write configuration abstractions.
+* **GitHub Copilot**: Used for inline code completions, formatting swagger block annotations, and generating boilerplate test cases.
+
+### 2. Key Prompt Templates Used
+* **Architecture Planning Prompt**:
+  > *"You are a senior Full-Stack Architect. Design a Notes management system using Laravel 11 and React. Decouple the database layer using the Repository pattern and define a generic AI service interface that supports swapping between Google Gemini and OpenAI. Keep controllers thin and write a Docker Compose configuration for MySQL, Redis, and Nginx."*
+* **Vector Similarity Math Prompt**:
+  > *"Write a PHP function in SemanticSearchService to calculate the Cosine Similarity between two arrays of floats (representing vector embeddings). Ensure it prevents division-by-zero errors when handling zero vectors or empty inputs by returning 0.0 safely."*
+* **PHPUnit Mocking Prompt**:
+  > *"Write a PHPUnit feature test for NoteController summary generation. Mock the AIServiceInterface using Mockery to prevent hitting live API endpoints during testing. Ensure the test asserts that a 200 OK response is returned with the mocked summary text."*
+
+### 3. Generated Code Validation Strategy
+To guarantee the safety and accuracy of AI-generated components, we established a strict three-layer validation system:
+* **Mathematical Vector Assertions**: Implemented mathematical validation unit tests (`SemanticSearchTest.php`) verifying vector similarity values (orthogonal vector matches = `0.0`, identical = `1.0`, opposite = `-1.0`).
+* **Deterministic Service Mocking**: Isolated the AI layers during test suite runs using Mockery. This prevents external network dependence and ensures tests are fast, cost-free, and stable.
+* **System End-to-End Tests**: Ran integration feature tests covering the full database transaction, request validations (422 responses), CORS configurations, and cache clearing behaviors.
+
 <!-- End of README -->
 

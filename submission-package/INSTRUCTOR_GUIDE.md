@@ -10,9 +10,10 @@ This folder contains the complete documentation, setup instructions, architectur
 
 ## Folder Contents
 1. **[INSTRUCTOR_GUIDE.md](file:///D:/ai-notes-system/submission-package/INSTRUCTOR_GUIDE.md)**: This file (complete setup & architecture breakdown).
-2. **`screenshots/`**: Directory where project screenshots are saved. (Please refer to the **Screenshots Reference** section below).
-3. **[README.md](file:///D:/ai-notes-system/README.md)**: Main developer-focused README for the repository.
-4. **[api_examples.http](file:///D:/ai-notes-system/api_examples.http)**: REST client examples for manual API testing.
+2. **[AI_USAGE_EXPLANATION.md](file:///D:/ai-notes-system/submission-package/AI_USAGE_EXPLANATION.md)**: Report outlining where AI was used and how generated code was strictly validated.
+3. **`screenshots/`**: Directory where project screenshots are saved. (Please refer to the **Screenshots Reference** section below).
+4. **[README.md](file:///D:/ai-notes-system/README.md)**: Main developer-focused README for the repository.
+5. **[api_examples.http](file:///D:/ai-notes-system/api_examples.http)**: REST client examples for manual API testing.
 
 ---
 
