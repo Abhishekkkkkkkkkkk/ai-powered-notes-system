@@ -1,0 +1,124 @@
+DATABASE NOTES DUMP:
+Total Notes: 24
+=================================
+
+ID: 1
+Title: Alias velit qui beatae maxime ut.
+Content Snippet: Dolores aut accusamus explicabo ea. Necessitatibus eligendi et nulla magnam a ut. Voluptas enim anim...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 2
+Title: Ut possimus sequi impedit ullam cupiditate.
+Content Snippet: Dolore autem ut ea et nesciunt vitae. Excepturi nemo mollitia at. Nisi molestiae reprehenderit inven...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 3
+Title: Est et nisi.
+Content Snippet: Et exercitationem quia blanditiis voluptas maxime at non. Provident voluptas vel suscipit consequatu...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 4
+Title: Aut odit ex.
+Content Snippet: Voluptatem sint voluptatum sit ut excepturi non perferendis. Sapiente saepe doloremque ut sunt. Omni...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 5
+Title: Qui exercitationem ut delectus rerum odio.
+Content Snippet: Ut ut non est eum. Provident qui rerum animi. Reiciendis et eos inventore molestiae ipsa quos placea...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 6
+Title: Quam sint ea est.
+Content Snippet: Iste reiciendis cupiditate amet voluptatem. Maiores rerum eaque sint ut esse ipsa aperiam. Sit sint ...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 7
+Title: Velit labore sapiente tempore expedita voluptatum.
+Content Snippet: Qui qui in mollitia dolorum. Autem minus sint repudiandae. Quam et reiciendis fuga. Quidem maiores t...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 8
+Title: Eum deserunt ea ut.
+Content Snippet: Omnis sit et et minus qui quos amet. Magni consequatur sed quia qui ut omnis odit. Eaque dolor ipsa ...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 9
+Title: Laudantium nostrum quia.
+Content Snippet: Quis quibusdam in optio quibusdam dignissimos modi reprehenderit quasi. Et ducimus consequatur sequi...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 10
+Title: Sit occaecati exercitationem officia.
+Content Snippet: In nam dolorum debitis sit. Ut incidunt aut qui quo et. Voluptas voluptatem veritatis ipsa autem non...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 11
+Title: Necessitatibus maxime et culpa corrupti quis.
+Content Snippet: Provident repudiandae aut facilis laudantium alias at cupiditate. Officiis quibusdam labore blanditi...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 12
+Title: Temporibus exercitationem consequatur vitae ducimus.
+Content Snippet: Maxime et beatae placeat nesciunt. Ut numquam saepe voluptatem est quo repellendus et. Ipsum odit qu...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 13
+Title: Ducimus voluptatem hic dolores alias.
+Content Snippet: Dolorem dolor consequuntur hic qui ipsa porro. Et earum dolorem nam cum laboriosam numquam. Sed even...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 14
+Title: Eius sed beatae dolores repudiandae voluptas.
+Content Snippet: Tempore ut et aliquam rerum et nobis. Nihil neque maiores asperiores et. Iusto explicabo tempore et ...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 15
+Title: Magnam quisquam illum.
+Content Snippet: Sed perferendis accusamus aut et. Debitis ullam ad consequatur est similique aut nobis. Eligendi sun...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 16
+Title: Dolor qui repellendus voluptatem.
+Content Snippet: Praesentium velit iusto modi repudiandae. Omnis est veritatis adipisci qui est. Quidem voluptas veli...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 17
+Title: Explicabo exercitationem facilis.
+Content Snippet: Delectus quasi quia totam perspiciatis doloribus est. Animi consequuntur ut ducimus necessitatibus d...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 18
+Title: Atque ea ut qui voluptas quibusdam.
+Content Snippet: Rem magnam libero repellendus assumenda. Sit sed officiis quia odio. Exercitationem aut minus aliqua...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 19
+Title: Ad dignissimos et.
+Content Snippet: Explicabo illum nulla dolor. Qui aliquam placeat aperiam qui. Delectus beatae consequatur consequunt...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 20
+Title: Voluptatem molestiae aliquid velit hic.
+Content Snippet: Possimus magnam nihil reiciendis illo sit. Possimus laboriosam quos doloremque ut sequi. Ea ut qui p...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 21
+Title: Officiis accusamus ipsam.
+Content Snippet: Ab sapiente ducimus ducimus neque architecto. Non repudiandae debitis et incidunt ducimus. Eveniet o...
+Has Embedding: YES (1536 dimensions)
+---------------------------------
+ID: 27
+Title: Modern Web Apps with PHP and Laravel
+Content Snippet: Laravel is a PHP web framework that follows the Model-View-Controller (MVC) architectural pattern. I...
+Has Embedding: NO (null)
+---------------------------------
+ID: 28
+Title: Java & OOP
+Content Snippet: Java is a class-based, object-oriented programming language designed to have as few implementation d...
+Has Embedding: NO (null)
+---------------------------------
+ID: 29
+Title: Mastering Productivity and Daily Calendars
+Content Snippet: Time blocking is a time management method where you divide your day into blocks of time. Each block ...
+Has Embedding: NO (null)
+---------------------------------

@@ -1,0 +1,64 @@
+### AI Notes Management System API Testing Examples
+@baseUrl = http://localhost:8000/api
+
+### 1. Get Paginated Notes (Latest first, page 1, 10 per page)
+GET {{baseUrl}}/notes?page=1&limit=10
+Accept: application/json
+
+###
+
+### 2. Create Note
+# Note: Generates vector embedding in background/sync during save
+POST {{baseUrl}}/notes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Clean Code and SOLID Principles",
+  "content": "SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable. Single responsibility, Open-closed, Liskov substitution, Interface segregation, and Dependency inversion."
+}
+
+###
+
+### 3. Get Single Note (Replace ID with an actual note ID, e.g., 1)
+GET {{baseUrl}}/notes/1
+Accept: application/json
+
+###
+
+### 4. Update Note (Replace ID with an actual note ID)
+# Note: Re-calculates embedding, invalidates cached note summary
+PUT {{baseUrl}}/notes/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Clean Code and SOLID Principles (Updated)",
+  "content": "SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable. 1. Single Responsibility. 2. Open-Closed. 3. Liskov Substitution. 4. Interface Segregation. 5. Dependency Inversion."
+}
+
+###
+
+### 5. Generate AI Summary for Note (Replace ID with actual ID)
+# Note: Hits OpenAI on first call, caches output in Redis for subsequent requests
+POST {{baseUrl}}/notes/1/summary
+Accept: application/json
+
+###
+
+### 6. Semantic Search Notes
+# Note: Converts query to vector embedding, computes cosine similarity against notes
+POST {{baseUrl}}/notes/search
+Content-Type: application/json
+Accept: application/json
+
+{
+  "query": "explain design principles for clean software architectures"
+}
+
+###
+
+### 7. Delete Note (Replace ID with actual ID)
+# Note: Deletes note and invalidates Redis cached summary
+DELETE {{baseUrl}}/notes/1
+Accept: application/json

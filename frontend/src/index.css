@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-slate-100;
+  }
+}
+
+@layer utilities {
+  /* Premium Glassmorphism Card Style */
+  .glass-card {
+    background: rgba(15, 23, 42, 0.45); /* Slate-900 semi-transparent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card-hover:hover {
+    background: rgba(15, 23, 42, 0.65);
+    border-color: rgba(139, 92, 246, 0.3); /* Violet glow borders */
+    box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .glass-input {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .glass-input:focus {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(139, 92, 246, 0.5);
+    outline: none;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+  }
+
+  /* Decorative Ambient Glows */
+  .glow-purple {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  .glow-blue {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617; /* Slate-950 background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b; /* Slate-800 scroll indicator */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155; /* Slate-700 on hover */
+}
