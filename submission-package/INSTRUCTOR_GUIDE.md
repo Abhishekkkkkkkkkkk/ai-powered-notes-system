@@ -27,7 +27,7 @@ To run the application locally on your machine, you only need to have **Docker &
    AI_PROVIDER=gemini
    GEMINI_API_KEY=your_actual_google_ai_studio_api_key
    GEMINI_MODEL_EMBEDDING=gemini-embedding-001
-   GEMINI_MODEL_SUMMARY=gemini-1.5-flash
+   GEMINI_MODEL_SUMMARY=gemini-2.5-flash
    ```
 2. **Spin Up the Docker Containers**:
    From the root directory (`ai-notes-system`), run:
@@ -51,6 +51,7 @@ To run the application locally on your machine, you only need to have **Docker &
    * **Frontend UI Dashboard**: [http://localhost:5173](http://localhost:5173)
    * **API Core Endpoint**: [http://localhost:8000/api](http://localhost:8000/api)
    * **Interactive Swagger UI API Docs**: [http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
+     * *Troubleshooting Note*: If Swagger UI displays "Failed to load API definition" due to a cached browser redirect or 404 from before the Swagger file was generated, perform a **hard refresh** (`Ctrl + F5` or `Cmd + Shift + R`) or open the page in an **incognito window** to clear the cache and load the freshly compiled `/docs` API definition.
 
 ---
 
@@ -90,7 +91,7 @@ graph TD
 
 ### Key Components:
 * **[AIServiceInterface.php](file:///D:/ai-notes-system/backend/app/Services/AIServiceInterface.php)**: The contract defining AI operations. It enables switching AI providers globally using a single setting in `.env` without modifying downstream controllers.
-* **[GeminiService.php](file:///D:/ai-notes-system/backend/app/Services/GeminiService.php)**: Integrates the 100% free Google Gemini API. Handles vector generation (`gemini-embedding-001` with custom 768 dimension truncation) and summaries (`gemini-1.5-flash`). Features offline self-healing fallback mechanisms.
+* **[GeminiService.php](file:///D:/ai-notes-system/backend/app/Services/GeminiService.php)**: Integrates the 100% free Google Gemini API. Handles vector generation (`gemini-embedding-001` with custom 768 dimension truncation) and summaries (`gemini-2.5-flash`). Features offline self-healing fallback mechanisms. Note that for `gemini-2.5-flash`, the output token limit is configured to `1024` to avoid truncating summaries when the model consumes budget for reasoning/thinking tokens.
 * **[SemanticSearchService.php](file:///D:/ai-notes-system/backend/app/Services/SemanticSearchService.php)**: Computes the query vectors and ranks database notes using high-dimensional Cosine Similarity formulas.
 * **[SummaryService.php](file:///D:/ai-notes-system/backend/app/Services/SummaryService.php)**: Generates 3-5 line note summaries. Caches the output in **Redis** with a 24-hour TTL and invalidates the cache automatically if the note is edited or deleted.
 
